@@ -1,46 +1,43 @@
 // src/App.jsx
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import { fetchAllCountries } from "./api/restCountries";
+import CountryList from "./components/CountryList";
 
 export default function App() {
+  const [countries, setCountries] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+
   useEffect(() => {
-    // 1) On met notre logique asynchrone dans une fonction async.
-    //    (useEffect lui-même ne doit pas être async directement.)
-    async function loadCountries() {
+    async function load() {
+      setLoading(true);
+      setError(null);
+
       try {
-        // 2) URL de l'API REST Countries (publique, pas d'inscription)
-        const url =
-          "https://restcountries.com/v3.1/all?fields=name,capital,region,population,flags";
+        const data = await fetchAllCountries();
 
-        // 3) Appel HTTP (fetch est asynchrone -> renvoie une Promise)
-        const response = await fetch(url);
-
-        // 4) Gestion simple d'erreur HTTP (404, 500, etc.)
-        //    fetch ne "fail" pas automatiquement sur 404/500, donc on vérifie response.ok.
-        if (!response.ok) {
-          throw new Error(`Erreur HTTP ${response.status} - ${response.statusText}`);
-        }
-
-        // 5) Conversion en JSON (json() est aussi asynchrone)
-        const data = await response.json();
-
-        // 6) Objectif: afficher les données dans la console
-        console.log("REST Countries (JSON):", data);
-
-        // Bonus simple: afficher un exemple (le 1er pays)
-        console.log("Exemple 1er pays:", data[0]);
+        // Vous pouvez limiter à 20 pour un premier rendu (plus fluide)
+        setCountries(data.slice(0, 20));
       } catch (err) {
-        // 7) Gestion simple des erreurs (réseau, parsing JSON, throw HTTP...)
-        console.error("Erreur pendant l'appel REST Countries:", err);
+        setError(err.message || "Erreur inconnue");
+        setCountries([]);     // important : garantit le cas "aucune donnée"
+      } finally {
+        setLoading(false);
       }
     }
 
-    loadCountries();
+    load();
   }, []);
 
   return (
     <div style={{ padding: 16 }}>
-      <h1>Test REST Countries API</h1>
-      <p>Ouvrez la console (F12) pour voir le JSON.</p>
+      <h1>REST Countries</h1>
+
+      {loading && <p>Chargement…</p>}
+      {error && <p style={{ color: "crimson" }}>Erreur : {error}</p>}
+
+      {/* Le composant dédié d'affichage */}
+      {!loading && !error && <CountryList countries={countries} />}
     </div>
   );
 }
