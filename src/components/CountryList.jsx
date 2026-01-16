@@ -2,10 +2,13 @@
 // Rôle : composant dédié à l'affichage (liste/cartes) des pays.
 // Il reçoit les données via des props (bonne pratique : pas d'appel API ici).
 
+function formatNumber(n) {
+  return new Intl.NumberFormat("fr-FR").format(n ?? 0);
+}
+
 export default function CountryList({ countries }) {
-  // 1) Gestion du cas "aucune donnée"
   if (!countries || countries.length === 0) {
-    return <p>Aucune donnée à afficher.</p>;
+    return <p>Aucun pays ne correspond à vos filtres.</p>;
   }
 
   // 2) Rendu dynamique : on transforme le tableau en éléments UI avec map()
@@ -13,21 +16,20 @@ export default function CountryList({ countries }) {
     <div
       style={{
         display: "grid",
-        gridTemplateColumns: "repeat(auto-fill, minmax(220px, 1fr))",
+        gridTemplateColumns: "repeat(auto-fill, minmax(260px, 1fr))",
         gap: 12,
-        marginTop: 12,
       }}
     >
-      {countries.map((country) => {
-        // Petit “garde-fou” : certaines API peuvent renvoyer des champs absents
-        const name = country?.name?.common ?? "Nom inconnu";
-        const region = country?.region ?? "Région inconnue";
-        const capital = country?.capital?.[0] ?? "Capitale inconnue";
-        const flagUrl = country?.flags?.png; // REST Countries v3 fournit flags.png/svg
+      {countries.map((c) => {
+        const name = c?.name?.common ?? "Nom inconnu";
+        const region = c?.region ?? "Région inconnue";
+        const capital = c?.capital?.[0] ?? "Capitale inconnue";
+        const population = c?.population ?? 0;
+        const flagUrl = c?.flags?.png;
 
         return (
           <article
-            key={name} // idéalement un code unique (cca3) si vous l'avez demandé dans fields
+            key={name}
             style={{
               border: "1px solid #ddd",
               borderRadius: 12,
@@ -55,6 +57,9 @@ export default function CountryList({ countries }) {
             
             <p style={{ marginTop: 10, marginBottom: 0, fontSize: 14 }}>
               <strong>Capitale :</strong> {capital}
+            </p>
+            <p style={{ marginTop: 6, marginBottom: 0, fontSize: 14 }}>
+              <strong>Population :</strong> {formatNumber(population)}
             </p>
           </article>
         );
