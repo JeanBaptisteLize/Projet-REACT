@@ -62,6 +62,17 @@ export default function CountryFilters({
           <option value="GT_2M">Plus de 5 000 000</option>
         </select>
       </label>
+      
+      <button
+        onClick={() => {
+            onSearchChange("");
+            onRegionChange("ALL");
+            onPopBucketChange("ALL");
+        }}
+        style={{ marginBottom: 12 }}
+        >
+        Réinitialiser les filtres
+        </button>
     </div>
   );
 }
