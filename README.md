@@ -22,10 +22,11 @@ L’application permet d’afficher une **liste dynamique de pays**, avec les fo
 -  **Filtre par région géographique**  (Ameriques, Afrique, Asie, etc..)
 -  **Filtre par tranche de population**  
 -  **Affichage de la capitale** de chaque pays
+-  **Bouton Rest** pour réinitialiser les filtres
 
 ## Organisation et méthodologie
 
-Le projet a été réalisé en **travail de programmation en binôme**, avec une alternance régulière des rôles :
+Le projet a été réalisé en **travail de programmation en binôme**, avec une alternance régulière des rôles (~30min):
 
 - **Développeur** : implémentation du code et verbalisation des actions
 - **Guide** : interaction avec la documentation et l’assistant IA, analyse et reformulation des solutions
