@@ -34,6 +34,19 @@ Le projet a été réalisé en **travail de programmation en binôme**, avec une
 Cette organisation a favorisé la compréhension des concepts fondamentaux de **React** (composants, états, événements, appels asynchrones) ainsi qu’une utilisation raisonnée d’un **assistant IA** comme outil pédagogique d’accompagnement.
 
 
+Une opération **asynchrone** est une opération non bloquante : elle est lancée, mais son résultat sera disponible plus tard, sans arrêter l’exécution du programme.
+- ici fetch() ne donne pas la réponse tout de suite -> ça renvoit une **Promise**
+- await : attends que la Promise se termine
+
+Une **Promise** est un objet JavaScript représentant la valeur future d'une opération asynchrone, c'est à dire la promesse qu'une réponse à une opération asynchrone sera disponible plus tard.
+Elle peut avoir 3 états:
+- pending : En attente
+- fulfilled : Résolue
+- rejected : Echec
+
+Le fonctionnement de fetch() est de démarrer une requête HTTP, puis de retourner immediatement une Promise, tout en ne bloquant pas le programme, avant d'enchaîner le traitement des données une fois la réponse disponible.
+Cette promise représente la **réponse HTTP** future (l'exécution sur le navigateur)
+
 
 
 

@@ -12,7 +12,7 @@ const STORAGE_KEY = "country_filters_v1";
 // (sauvegarde entre sessions / rechargements)
 function loadFiltersFromStorage() {
   try {
-    const raw = localStorage.getItem(STORAGE_KEY);
+    const raw = localStorage.getItem(STORAGE_KEY);  //recherche des données associées à la clé STORAGE_KEY
     if (!raw) return null;
     return JSON.parse(raw);
   } catch {
@@ -25,7 +25,7 @@ function saveFiltersToStorage(filters) {
   try {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(filters));
   } catch {
-    // Si stockage plein / refusé, on ignore (UX > crash)
+    // Si stockage plein / refusé, on ignore
   }
 }
 
@@ -71,13 +71,13 @@ export default function App() {
       try {
         const { data } = await fetchAllCountries();
 
-        // On trie les pays par nom pour un rendu stable
+        // On trie les pays par nom pour un rendu stable ([...data] duplication du tableau data)
         const sorted = [...data].sort((a, b) =>
-          (a?.name?.common ?? "").localeCompare(b?.name?.common ?? "")
+          (a?.name?.common ?? "").localeCompare(b?.name?.common ?? "")    // a? et b? : gestion des cas où a ou b seraient undefined sinon string vide
         );
 
-        // On limite volontairement le jeu de données à 250 pays
-        setAllCountries(sorted.slice(0, 250));
+        // On limite volontairement le jeu de données à 250 pays (max)
+        setAllCountries(sorted);
 
         console.log("Données REST Countries :", data);
       } catch (e) {
@@ -89,7 +89,7 @@ export default function App() {
     }
 
     load();
-  }, []);
+  }, []); // Le tableau vide [] signifie que l'effet s'exécute une seule fois au montage
 
 
   // Sauvegarde des filtres à chaque changement

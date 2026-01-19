@@ -3,9 +3,8 @@
 import CountryCard from "./CountryCard";
 
 export default function CountryResults({ countries }) {
-
   if (countries.length === 0) {
-    return <p>Aucun pays ne correspond aux filtres.</p>;
+    return <p>Aucun pays trouvé</p>;
   }
 
   return (

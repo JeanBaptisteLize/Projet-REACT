@@ -5,7 +5,7 @@
 const BASE_URL = "https://restcountries.com/v3.1";
 
 // Bonne pratique REST Countries : préciser les champs pour éviter une réponse énorme. :contentReference[oaicite:0]{index=0}
-const FIELDS = "name,capital,region,population,flags";
+const FIELDS = "name,capital,cca3,region,population,flags";
 
 /**
  
@@ -20,7 +20,7 @@ export async function fetchAllCountries() {
   console.log("après fetch");
 
   // fetch() ne lance pas d'erreur automatiquement sur 404/500,
-  // donc on teste response.ok. :contentReference[oaicite:1]{index=1}
+  // donc on teste response.ok. :contentReference[oaicite:0]{index=0}
   if (!response.ok) {
     throw new Error(`REST Countries: HTTP ${response.status} ${response.statusText}`);
   }
@@ -29,6 +29,8 @@ export async function fetchAllCountries() {
   // comme c'est une promesse(asynchrone), il attend que le JSON soit prêt.
 
   const data = await response.json();
+
+  console.log("données reçues de l'API :", data);
 
 
   // Retourne response et data pour avoir accès aux deux

@@ -19,7 +19,7 @@ export default function CountrySearch({
     <section style={{ marginBottom: 24 }}>
       <h2>Entrez le pays désiré</h2>
 
-      {/* Recherche */}
+      {/* Barre de Recherche */}
       <label>
         <div style={{ fontSize: 12, opacity: 0.8 }}>Nom du pays</div>
         <input
@@ -30,7 +30,7 @@ export default function CountrySearch({
         />
       </label>
 
-      {/* Région */}
+      {/* Filtre Région */}
       <label>
         <div style={{ fontSize: 12, opacity: 0.8, marginTop: 12 }}>
           Région
@@ -49,7 +49,7 @@ export default function CountrySearch({
         </select>
       </label>
 
-      {/* Population */}
+      {/* Filtre Population */}
       <label>
         <div style={{ fontSize: 12, opacity: 0.8, marginTop: 12 }}>
           Population
@@ -66,7 +66,7 @@ export default function CountrySearch({
         </select>
       </label>
 
-      {/* Reset */}
+      {/* Button Reset */}
       <button
         type="button"
         onClick={handleReset}
