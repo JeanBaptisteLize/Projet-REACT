@@ -380,3 +380,49 @@ App.jsx (Chef d'orchestre)
 ---
 
 
+
+## Interaction au Survol - Carte de Pays Extensible
+### Prompt
+
+> Je veux que lorsque l'on pose notre curseur sur les drapeaux, cela étend la carte du tableau pour afficher les informations du pays. Explique-moi simplement comment intégrer ce code à mon projet.
+
+---
+
+## 💡 Réponse de l'IA - Solution Simple avec CSS
+
+### Principe de Fonctionnement
+- ✅ Ajouter une zone d'infos cachées dans la carte du pays (capitale, région, population)
+- ✅ Utiliser uniquement du CSS avec `:hover`
+- ✅ Au survol, la carte s'agrandit
+- ✅ Les infos apparaissent progressivement
+- ❌ **Aucun state React nécessaire**
+- ❌ **Aucune logique JavaScript compliquée**
+
+
+## 🔧 Comment Intégrer ce Code à Votre Projet
+### Étape : Modifier le Composant
+
+Ajoutez la classe `country-details` autour des informations que vous souhaitez afficher au survol dans `CountryResults.jsx`.
+
+### Étape 2️⃣ : Ajouter les Styles CSS
+
+Copiez le CSS ci-dessus dans votre fichier de styles principal (ex: `App.css`, `index.css` ou créez `CountryResults.css`).
+
+### Étape 3️⃣ : Importer le CSS (si fichier séparé)
+```jsx
+import './CountryResults.css';
+```
+
+### Étape 4️⃣ : Tester
+
+Survolez une carte de pays avec votre curseur → la carte s'agrandit et les détails apparaissent ! 🎉
+
+---
+
+## ✨ Résultat Final
+
+| État | Comportement |
+|------|--------------|
+| **Normal** | Carte compacte avec drapeau et nom |
+| **Survol** | Carte agrandie + infos détaillées visibles |
+| **Transition** | Animation fluide de 0.3s |
