@@ -13,15 +13,12 @@ export default function CountryCard({ country }) {
         className="flag"
       />
 
-      {/* Infos cachées par défaut */}
+      {/* Infos cachées par défaut que l'on affiche avec le hover de curseur*/}
       <div className="details">
-        <h3>{country.name?.common}</h3>
+        <h3>{country.name?.common} <strong>:</strong> {country.cca3}</h3>
         <p><strong>Région :</strong> {country.region}</p>
         <p><strong>Capitale :</strong> {country.capital?.[0] ?? "—"}</p>
-        <p>
-          <strong>Population :</strong>{" "}
-          {country.population?.toLocaleString()}
-        </p>
+        <p><strong>Population :</strong>{" "} {country.population?.toLocaleString()}</p>
       </div>
 
     </div>

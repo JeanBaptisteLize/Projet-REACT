@@ -60,9 +60,9 @@ export default function CountrySearch({
           style={{ width: "100%", padding: 10 }}
         >
           <option value="ALL">Toutes</option>
-          <option value="LT_10K">Moins de 50 000</option>
-          <option value="BTW_10K_2M">50 000 – 5 millions</option>
-          <option value="GT_2M">Plus de 5 millions</option>
+          <option value="LT_50K">Moins de 50 000</option>
+          <option value="BTW_50K_5M">50 000 – 5 millions</option>
+          <option value="GT_5M">Plus de 5 millions</option>
         </select>
       </label>
 

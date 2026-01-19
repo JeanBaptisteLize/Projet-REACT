@@ -7,7 +7,7 @@ const BASE_URL = "https://restcountries.com/v3.1";
 // Bonne pratique REST Countries : préciser les champs pour éviter une réponse énorme. :contentReference[oaicite:0]{index=0}
 const FIELDS = "name,capital,cca3,region,population,flags";
 
-/**
+/*  code ccs3 : code ISO 3166-1 alpha-3, c'est-à-dire le code à trois lettres attribué à chaque pays par l'Organisation internationale de normalisation
  
 Récupère tous les pays (avec champs limités).
 @returns {Promise<Array>} tableau de pays*/

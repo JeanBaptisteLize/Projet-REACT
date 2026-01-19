@@ -31,11 +31,11 @@ function saveFiltersToStorage(filters) {
 
 // Fonction helper qui vérifie si une population correspond au bucket sélectionné
 function matchPopBucket(population, bucket) {
-  if (bucket === "ALL") return true;
-  if (bucket === "LT_10K") return population < 50_000;
-  if (bucket === "BTW_10K_2M")
+  if (bucket === "ALL") return true;    // tous les pays sont acceptés
+  if (bucket === "LT_50K") return population < 50_000;
+  if (bucket === "BTW_50K_5M")
     return population >= 50_000 && population <= 5_000_000;
-  if (bucket === "GT_2M") return population > 5_000_000;
+  if (bucket === "GT_5M") return population > 5_000_000;
   return true;
 }
 
@@ -133,13 +133,13 @@ export default function App() {
   return (
     <div style={{ padding: 16 }}>
       <h1>Recherche de pays avec Reset</h1>
-
+      {/* États de chargement / erreur */}
       {loading && <p>Chargement…</p>}
       {error && <p style={{ color: "crimson" }}>Erreur : {error}</p>}
 
       {!loading && !error && (
         <>
-          {/* Composant de recherche / filtres */}
+          {/* Composant de recherche / filtres qui sont récupérés depuis le parent CountrySearch */}
           <CountrySearch
             search={search}
             onSearchChange={setSearch}

@@ -23,6 +23,7 @@ L’application permet d’afficher une **liste dynamique de pays**, avec les fo
 -  **Filtre par tranche de population**  
 -  **Affichage de la capitale** de chaque pays
 -  **Bouton Rest** pour réinitialiser les filtres
+-  **Hover sur drapeaux** pour dérouler le menu d'information lié au drapeau du pays par survol du curseur
 
 ## Organisation et méthodologie
 
@@ -44,7 +45,7 @@ Elle peut avoir 3 états:
 - fulfilled : Résolue
 - rejected : Echec
 
-Le fonctionnement de fetch() est de démarrer une requête HTTP, puis de retourner immediatement une Promise, tout en ne bloquant pas le programme, avant d'enchaîner le traitement des données une fois la réponse disponible.
+Le fonctionnement de fetch() est de démarrer une requête HTTP (get:recupérer, post:envoyer, put:update, delete:suppr), puis de retourner immediatement une Promise, tout en ne bloquant pas le programme, avant d'enchaîner le traitement des données une fois la réponse disponible.
 Cette promise représente la **réponse HTTP** future (l'exécution sur le navigateur)
 
 
