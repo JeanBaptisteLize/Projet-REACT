@@ -21,7 +21,7 @@ export default function CountrySearch({
 
       {/* Barre de Recherche */}
       <label>
-        <div style={{ fontSize: 12, opacity: 0.8 }}>Nom du pays</div>
+        <div>Nom du pays</div>
         <input
           value={search}
           onChange={(e) => onSearchChange(e.target.value)}
@@ -32,7 +32,7 @@ export default function CountrySearch({
 
       {/* Filtre Région */}
       <label>
-        <div style={{ fontSize: 12, opacity: 0.8, marginTop: 12 }}>
+        <div>
           Région
         </div>
         <select
@@ -51,7 +51,7 @@ export default function CountrySearch({
 
       {/* Filtre Population */}
       <label>
-        <div style={{ fontSize: 12, opacity: 0.8, marginTop: 12 }}>
+        <div>
           Population
         </div>
         <select

@@ -14,13 +14,10 @@ Récupère tous les pays (avec champs limités).
 export async function fetchAllCountries() {
   const url = `${BASE_URL}/all?fields=${FIELDS}`;
 
-  console.log("avant fetch");
   const response = await fetch(url);  // fetch : Fonction JavaScript native qui envoie une requête HTTP à l'URL donnée
                                       // Attrubue à response la confirmation de la promesse d'avoir reçu une réponse pour cette requête.
-  console.log("après fetch");
 
-  // fetch() ne lance pas d'erreur automatiquement sur 404/500,
-  // donc on teste response.ok. :contentReference[oaicite:0]{index=0}
+  // fetch() ne lance pas d'erreur automatiquement sur 404/500, donc on teste response.ok.
   if (!response.ok) {
     throw new Error(`REST Countries: HTTP ${response.status} ${response.statusText}`);
   }
@@ -30,10 +27,8 @@ export async function fetchAllCountries() {
 
   const data = await response.json();
 
-  console.log("données reçues de l'API :", data);
-
 
   // Retourne response et data pour avoir accès aux deux
-  return { response, data };
+  return data;
 
 }

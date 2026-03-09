@@ -69,7 +69,7 @@ export default function App() {
       setError(null);
 
       try {
-        const { data } = await fetchAllCountries();
+        const data = await fetchAllCountries();
 
         // On trie les pays par nom pour un rendu stable ([...data] duplication du tableau data)
         const sorted = [...data].sort((a, b) =>
@@ -79,7 +79,6 @@ export default function App() {
         // On limite volontairement le jeu de données à 250 pays (max)
         setAllCountries(sorted);
 
-        console.log("Données REST Countries :", data);
       } catch (e) {
         setError(e.message || "Erreur inconnue");
         setAllCountries([]);
